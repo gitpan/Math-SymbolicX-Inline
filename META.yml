@@ -1,0 +1,13 @@
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Math-SymbolicX-Inline
+version:      0.01
+version_from: lib/Math/SymbolicX/Inline.pm
+installdirs:  site
+requires:
+    Math::Symbolic:                0.129
+    Math::Symbolic::Custom::Contains: 0.1
+    Test::More:                    0
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.17
