@@ -8,7 +8,7 @@ use Math::Symbolic qw/parse_from_string U_P_DERIVATIVE U_T_DERIVATIVE/;
 use Math::Symbolic::Custom::Contains;
 use Math::Symbolic::Compiler qw/compile_to_code/;
 
-our $VERSION = '0.01';
+our $VERSION = '1.00';
 
 sub import {
 
@@ -442,8 +442,8 @@ That would print C<-0.756802495307928>.
 =head2 EXTENDED USAGE
 
 You will have noticed the usage of the C<arg0> variable in the above
-example. Rather unspectacularily, C<argX> refers to the Xth argument
-to the function. Thus, C<arg20> refers to the twentieth argument.
+example. Rather unspectacularily, C<argX> refers to the X+1th argument
+to the function. Thus, C<arg19> refers to the twentieth argument.
 
 But it is atypical to use C<arg0> as a variable in a mathematical
 expression. We want to use the names C<x> and C<y> to compute

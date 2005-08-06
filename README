@@ -1,4 +1,4 @@
-Math-SymbolicX-Inline version 0.01
+Math-SymbolicX-Inline version 1.00
 ==================================
 
 This module is an extension to the Math::Symbolic module. A basic
@@ -17,9 +17,11 @@ of the module.
 
 Simple, contrived example:
 use Math::SymbolicX::Inline <<'HERE';
-myfunction = partial_derivative( sin(arg0) * sin(arg0), arg0 )
+myfunction = partial_derivative( sin(x) * sin(x), x )
+x (:=) arg0
 HERE
-
+print myfunction(3);
+# prints the derivative of sin(x)**2 evaluated at x=3
 
 INSTALLATION
 
