@@ -1,5 +1,5 @@
-Math-SymbolicX-Inline version 1.00
-==================================
+Math-SymbolicX-Inline
+=====================
 
 This module is an extension to the Math::Symbolic module. A basic
 familiarity with that module is required.
@@ -23,9 +23,24 @@ HERE
 print myfunction(3);
 # prints the derivative of sin(x)**2 evaluated at x=3
 
+
 INSTALLATION
 
 To install this module type the following:
+
+   perl Build.PL
+   ./Build
+   ./Build test
+   ./Build install
+
+On platforms that don't support the "./" notation, that would be:
+
+   perl Build.PL
+   perl Build
+   perl Build test
+   perl Build install
+
+If you wish, you may use the old MakeMaker style instead:
 
    perl Makefile.PL
    make
@@ -42,12 +57,10 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Put the correct copyright and licence information here.
-
-Copyright (C) 2005 by Steffen Müller
+Copyright (C) 2005-2006 by Steffen Müller
 
 This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.4 or,
+it under the same terms as Perl itself, either Perl version 5.6 or,
 at your option, any later version of Perl 5 you may have available.
 
 

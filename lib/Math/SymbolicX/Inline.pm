@@ -8,7 +8,7 @@ use Math::Symbolic qw/parse_from_string U_P_DERIVATIVE U_T_DERIVATIVE/;
 use Math::Symbolic::Custom::Contains;
 use Math::Symbolic::Compiler qw/compile_to_code/;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 sub import {
 

@@ -1,8 +1,11 @@
+Build.PL
 Changes
 lib/Math/SymbolicX/Inline.pm
-Makefile.PL
 MANIFEST			This list of files
 README
-t/00basic.t
-t/01examples.t
-META.yml                                 Module meta-data (added by MakeMaker)
+t/00pod.t
+t/00podcover.t
+t/01basic.t
+t/02examples.t
+Makefile.PL
+META.yml
