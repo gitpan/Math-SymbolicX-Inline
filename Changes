@@ -1,5 +1,8 @@
 Revision history for Perl extension Math::SymbolicX::Inline.
 
+1.11  Thu Dec 20 12:47 2007
+  - Fix bug for functions which use "argX" but not "arg(X-1)"
+
 1.01  Wed Sep 27 14:55 2006
   - Switched to Module::Build.
   - Added optional pod tests.

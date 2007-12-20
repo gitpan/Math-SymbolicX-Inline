@@ -8,7 +8,7 @@ use Math::Symbolic qw/parse_from_string U_P_DERIVATIVE U_T_DERIVATIVE/;
 use Math::Symbolic::Custom::Contains;
 use Math::Symbolic::Compiler qw/compile_to_code/;
 
-our $VERSION = '1.01';
+our $VERSION = '1.11';
 
 sub import {
 
@@ -226,7 +226,7 @@ sub import {
         }
 
         # number of arguments.
-        my $num_args = @args;
+        my $num_args = @args==0 ? 0 : $highest+1;
 
         # external sub calls
         my @real_external     = sort grep { $_ !~ /^arg\d+$/ } @external;
@@ -234,8 +234,11 @@ sub import {
 
         # This is where it gets really fancy!
         # ... and This is not the Right Way To Do It! FIXME!!!
-        my $final_code = "sub {\nmy \@args = \@_;\n";
-        $final_code .= <<HERE;
+        my $final_code = "sub {\n";
+        $final_code .= "my \@args = \@_;\n" if $num_real_external;
+
+        if (@args) {
+          $final_code .= <<HERE;
 if (\@_ < $highest+1) {
 	cluck(
 		"Warning: Math::SymbolicX::Inline compiled sub "
@@ -249,16 +252,18 @@ if (grep {!defined} \@_[0..$highest]) {
 	);
 }
 HERE
+        }
+
         my $num_argsm1 = $num_args - 1;
 
         $final_code .= "local \@_[0..$num_argsm1+$num_real_external] = ("
           . join( ', ',
-            ( map { /^arg(\d+)$/; "\$_[$1]" } @args ),
+            @args ? ( map { "\$_[$_]" } 0..$highest ) : (),
             ( map { "${pkg}::$_(\@args)" } @real_external ) )
           . ");\n"
-          if @real_external;
+          if $num_real_external;
 
-        my $vars = [ @args, @real_external ];
+        my $vars = [ @args?(map {"arg$_"} 0..$highest):(), @real_external ];
 
         my ( $mcode, $trees );
         eval { ( $mcode, $trees ) = compile_to_code( $h->{parsed}, $vars ); };

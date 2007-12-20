@@ -2,15 +2,15 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-          'PL_FILES' => {},
-          'INSTALLDIRS' => 'site',
           'NAME' => 'Math::SymbolicX::Inline',
-          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/Math/SymbolicX/Inline.pm',
           'PREREQ_PM' => {
-                           'Test::More' => 0,
+                           'Math::Symbolic' => '0.129',
                            'Math::Symbolic::Custom::Contains' => '0.1',
-                           'Math::Symbolic' => '0.129'
-                         }
+                           'Test::More' => '0'
+                         },
+          'INSTALLDIRS' => 'site',
+          'EXE_FILES' => [],
+          'PL_FILES' => {}
         )
 ;
